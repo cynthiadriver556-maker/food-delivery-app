@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #f6f8fa;
+  color: #333;
+}
+
+#appTitle {
+  color: #d35400;
+  text-align: center;
+}
+
+#dishList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.dish {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  width: 180px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin: 4px;
+}
+
+button:hover {
+  background-color: #219150;
+}
+
+#promoSection {
+  margin-top: 20px;
+}
+
+#cartTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#cartTable th, #cartTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.qty-btn {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.qty-btn:hover {
+  background-color: #1f5f8b;
+}
+
+.remove-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+#summarySection {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 360px;
+  margin: 20px auto;
+}
+
+#controls, #checkoutControls {
+  margin-top: 16px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

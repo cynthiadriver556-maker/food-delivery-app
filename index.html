@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Delivery App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 id="appTitle">🍔 Food Delivery App</h1>
+
+  <div id="userSection">
+    <h2>Welcome, <span id="userName">Guest</span>!</h2>
+  </div>
+
+  <div id="dishList"></div>
+
+  <div id="cartSection">
+    <h3>Your Cart</h3>
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Dish</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody"></tbody>
+    </table>
+    <p>Subtotal: $<span id="subtotalAmount">0</span></p>
+    <p>Discount: -$<span id="discountAmount">0</span></p>
+    <p><strong>Total: $<span id="totalAmount">0</span></strong></p>
+  </div>
+
+  <div id="promoSection">
+    <input type="text" id="promoCode" placeholder="Enter Promo Code (FOOD50)" />
+    <button onclick="applyPromo()">Apply Promo</button>
+    <p id="promoMessage"></p>
+    <button onclick="clearPromo()">Clear Promo</button>
+  </div>
+
+  <div id="controls">
+    <button onclick="sortByPrice()">Sort Dishes by Price</button>
+    <button id="checkoutBtn" onclick="goToCheckout()">Go to Checkout</button>
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

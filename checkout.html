@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout Summary</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🧾 Checkout Summary</h1>
+
+  <div id="summarySection">
+    <h3>Order Details</h3>
+    <ul id="checkoutItems"></ul>
+
+    <p>Subtotal: $<span id="subtotal">0.00</span></p>
+    <p>Discount: -$<span id="discount">0.00</span></p>
+    <p>Tax (5%): $<span id="tax">0.00</span></p>
+    <p>Delivery Charge: $<span id="delivery">0.00</span></p>
+    <hr />
+    <h3>Grand Total: $<span id="grandTotal">0.00</span></h3>
+  </div>
+
+  <div id="checkoutControls">
+    <button onclick="goBack()">⬅ Back to Menu</button>
+    <button onclick="placeOrder()">Place Order</button>
+  </div>
+
+  <script>
+    // Read cart and promo from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const promo = JSON.parse(localStorage.getItem("promo")) || { code: null, discount: 0 };
+
+    const checkoutList = document.getElementById("checkoutItems");
+    let subtotal = 0;
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} x ${item.qty} - ${(item.price * item.qty).toFixed(2)}`;
+      checkoutList.appendChild(li);
+      subtotal += item.price * item.qty;
+    });
+
+    // Apply discount (promo) before tax
+    const discount = Math.min(promo.discount || 0, subtotal); // discount cannot exceed subtotal
+    const taxableAmount = Math.max(0, subtotal - discount);
+    const tax = taxableAmount * 0.05; // 5% tax
+    const delivery = subtotal > 500 ? 0 : (subtotal === 0 ? 0 : 50); // no delivery for empty cart, free if subtotal>500
+    const grandTotal = taxableAmount + tax + delivery;
+
+    document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+    document.getElementById("discount").innerText = discount.toFixed(2);
+    document.getElementById("tax").innerText = tax.toFixed(2);
+    document.getElementById("delivery").innerText = delivery.toFixed(2);
+    document.getElementById("grandTotal").innerText = grandTotal.toFixed(2);
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert("Your cart is empty. Please add items before placing an order.");
+        return;
+      }
+      // For demo: simulate order placement then clear cart & promo
+      alert("Order placed! Total: $" + grandTotal.toFixed(2));
+      localStorage.removeItem("cart");
+      localStorage.removeItem("promo");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
